@@ -1,7 +1,7 @@
 // Import necessary modules
-const express = require('express'); // Framework for building web apps with Node.js
-const mongoose = require('mongoose'); // Object Data Modeling (ODM) library for MongoDB and Node.js
-const dotenv = require('dotenv'); // Module to load environment variables from a .env file
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 // Load environment variables from the .env file
 dotenv.config();
@@ -13,19 +13,19 @@ const PORT = process.env.PORT || 5000; // Set the server port, default to 5000 i
 // Middleware to parse JSON bodies in requests
 app.use(express.json());
 
-// Check and log the MongoDB URI to ensure it's loaded correctly
+// Log the MongoDB URI to ensure it's loaded correctly
 console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true, // Use the new MongoDB URL parser
-  useUnifiedTopology: true, // Use the new Server Discover and Monitoring engine
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected...')) // Log successful connection
-.catch(err => console.error('MongoDB connection error:', err)); // Log any connection errors
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 // Import routes
-const authRoutes = require('./routes/auth'); // Authentication routes
+const authRoutes = require('./routes/auth');
 
 // Use authentication routes under the '/api' path
 app.use('/api', authRoutes);
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`); // Log that the server is running
+  console.log(`Server running on port ${PORT}`);
 });
 
 // Export the app for use in serverless environments like Vercel
