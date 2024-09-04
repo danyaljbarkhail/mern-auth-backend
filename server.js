@@ -30,7 +30,15 @@ const authRoutes = require('./routes/auth'); // Authentication routes
 // Use authentication routes under the '/api' path
 app.use('/api', authRoutes);
 
+// Define root route to handle requests to the base URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the MERN Auth API!');
+});
+
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`); // Log that the server is running
 });
+
+// Export the app for use in serverless environments like Vercel
+module.exports = app;
