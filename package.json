@@ -1,8 +1,10 @@
 {
   "name": "mern-auth-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",  // Change "index.js" to "server.js" since your main file is server.js
   "scripts": {
+    "start": "node server.js", // Add this line to specify the start script for Vercel deployment
+    "dev": "nodemon server.js", // Add this line for local development with nodemon
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
